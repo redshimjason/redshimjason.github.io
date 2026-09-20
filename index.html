@@ -1,26 +1,289 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Jaeseon Sim</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jaeseon Sim — Software Engineer, Samsung Electronics">
+  <title>Jaeseon Sim</title>
+  <style>
+    :root {
+      --text: #1f2328;
+      --muted: #59636e;
+      --line: #d8dee4;
+      --link: #0969da;
+      --bg: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.58;
+      font-size: 16px;
+    }
+
+    main {
+      width: min(760px, calc(100% - 40px));
+      margin: 64px auto 80px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.35rem;
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+    }
+
+    .subtitle {
+      margin: 8px 0 2px;
+      font-size: 1.08rem;
+      color: var(--muted);
+    }
+
+    .interests {
+      margin: 3px 0 18px;
+      color: var(--muted);
+    }
+
+    .links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 0.96rem;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    section {
+      margin-top: 42px;
+    }
+
+    h2 {
+      margin: 0 0 15px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid var(--line);
+      font-size: 1.02rem;
+      letter-spacing: 0.075em;
+      text-transform: uppercase;
+    }
+
+    .entry {
+      margin-top: 21px;
+    }
+
+    .entry:first-of-type {
+      margin-top: 0;
+    }
+
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: baseline;
+    }
+
+    .entry-title {
+      font-weight: 650;
+    }
+
+    .date {
+      white-space: nowrap;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .meta {
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    p {
+      margin: 8px 0 0;
+    }
+
+    ul {
+      margin: 9px 0 0;
+      padding-left: 21px;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    .patents {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .patents li {
+      margin: 0 0 15px;
+    }
+
+    .patent-title {
+      font-weight: 600;
+    }
+
+    .patent-meta {
+      color: var(--muted);
+      font-size: 0.93rem;
+      margin-top: 1px;
+    }
+
+    .skills {
+      margin: 0;
+    }
+
+    footer {
+      margin-top: 52px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 620px) {
+      main {
+        width: min(100% - 28px, 760px);
+        margin-top: 36px;
+      }
+
+      h1 { font-size: 2rem; }
+
+      .entry-head {
+        display: block;
+      }
+
+      .date {
+        display: block;
+        margin-top: 2px;
+      }
+    }
+
+    @media print {
+      main {
+        width: 100%;
+        margin: 0;
+      }
+
+      a { color: inherit; }
+      footer { display: none; }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Jaeseon Sim</h1>
+  <main>
+    <header>
+      <h1>Jaeseon Sim</h1>
+      <div class="subtitle">Software Engineer, Samsung Electronics</div>
+      <div class="interests">Computer Systems · Runtime Systems · Hardware–Software Co-design</div>
+      <div class="links">
+        <!-- Replace the email address below before publishing. -->
+        <a href="mailto:your-email@example.com">Email</a>
+        <a href="https://github.com/redshimjason">GitHub</a>
+      </div>
+    </header>
 
-    <p>Software Engineer at Samsung Electronics</p>
+    <section>
+      <h2>About</h2>
+      <p>
+        I work on Android/Linux system performance at Samsung Electronics.
+        My experience spans memory management, kernel/user-space performance analysis,
+        and automated performance evaluation on mobile devices.
+      </p>
+    </section>
 
-    <h2>Research Interests</h2>
-    <p>
-        Computer Systems · Runtime Systems ·
-        Hardware-Software Co-design
-    </p>
+    <section>
+      <h2>Experience</h2>
 
-    <h2>About Me</h2>
-    <p>
-        I am a software engineer interested in computer systems
-        and system performance.
-    </p>
+      <div class="entry">
+        <div class="entry-head">
+          <div class="entry-title">Samsung Electronics — Software Engineer</div>
+          <div class="date">Mar 2020 – Present</div>
+        </div>
+        <div class="meta">Mobile eXperience (MX), System Development / System Performance</div>
+        <ul>
+          <li>Develop and optimize Android/Linux system software for memory management and system performance.</li>
+          <li>Analyze kernel regressions, memory pressure, swap/reclaim, and application-launch performance using system traces and controlled experiments.</li>
+          <li>Build automated multi-device testing and analysis pipelines for performance regression detection and validation.</li>
+        </ul>
+      </div>
+    </section>
 
-    <h2>Contact</h2>
-    <p>Email: your-email@example.com</p>
+    <section>
+      <h2>Education</h2>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div class="entry-title">Seoul National University</div>
+          <div class="date">Mar 2013 – Feb 2020</div>
+        </div>
+        <div class="meta">B.S. in Mathematics · Double Major in Computer Science and Engineering</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Patents</h2>
+
+      <ul class="patents">
+        <li>
+          <div class="patent-title">
+            <a href="https://patents.google.com/patent/US12229407B2/en">
+              Electronic Device Comprising Heterogeneous Memories and Method for Transferring Compression Data Between Heterogeneous Memories Thereof
+            </a>
+          </div>
+          <div class="patent-meta">Co-inventor · US 12,229,407 B2 · 2025</div>
+        </li>
+
+        <li>
+          <div class="patent-title">
+            <a href="https://patents.google.com/patent/WO2026010078A1/en">
+              Electronic Device, Method, and Non-Transitory Computer-Readable Storage Medium for Managing Available Space of Volatile Memory
+            </a>
+          </div>
+          <div class="patent-meta">Main inventor · WO 2026/010078 A1 · 2026</div>
+        </li>
+
+        <li>
+          <div class="patent-title">
+            <a href="https://patents.google.com/patent/US12625612B2/en">
+              Electronic Device for Managing Memory and Operating Method Thereof
+            </a>
+          </div>
+          <div class="patent-meta">Main inventor · US 12,625,612 B2 · 2026</div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <p class="skills">
+        C · C++ · Python · Java · Android/AOSP · Linux Kernel · Perfetto · ftrace · simpleperf · Git
+      </p>
+    </section>
+
+    <section>
+      <h2>Honors</h2>
+      <div class="entry">
+        <div class="entry-head">
+          <div class="entry-title">Samsung Electronics Company-Sponsored Graduate Study Program</div>
+          <div class="date">2026</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Last updated September 2026.
+    </footer>
+  </main>
 </body>
 </html>
