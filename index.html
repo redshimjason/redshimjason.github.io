@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Jaeseon Sim — Software Engineer, Samsung Electronics">
+  <meta name="description" content="Jaeseon Sim — Software Engineer at Samsung Electronics, working on Android/Linux system performance and memory-efficient mobile systems.">
   <title>Jaeseon Sim</title>
   <style>
     :root {
@@ -62,6 +62,11 @@
 
     a:hover { text-decoration: underline; }
 
+    a:focus-visible {
+      outline: 2px solid var(--link);
+      outline-offset: 3px;
+    }
+
     section {
       margin-top: 42px;
     }
@@ -94,6 +99,12 @@
       font-weight: 650;
     }
 
+    h3.entry-title {
+      margin: 0;
+      font-size: 1.02rem;
+      line-height: 1.45;
+    }
+
     .date {
       white-space: nowrap;
       color: var(--muted);
@@ -116,6 +127,15 @@
 
     li {
       margin: 5px 0;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+
+    .contributions .entry + .entry {
+      margin-top: 25px;
     }
 
     .patents {
@@ -142,6 +162,19 @@
       margin: 0;
     }
 
+    .skills > div {
+      display: grid;
+      grid-template-columns: 175px minmax(0, 1fr);
+      column-gap: 18px;
+      margin-top: 10px;
+    }
+
+    .skills > div:first-child { margin-top: 0; }
+
+    .skills dt { font-weight: 600; }
+
+    .skills dd { margin: 0; }
+
     footer {
       margin-top: 52px;
       padding-top: 14px;
@@ -152,7 +185,7 @@
 
     @media (max-width: 620px) {
       main {
-        width: min(100% - 28px, 760px);
+        width: min(calc(100% - 28px), 760px);
         margin-top: 36px;
       }
 
@@ -166,6 +199,13 @@
         display: block;
         margin-top: 2px;
       }
+
+      .skills > div {
+        display: block;
+        margin-top: 13px;
+      }
+
+      .skills dd { margin-top: 2px; }
     }
 
     @media print {
@@ -174,6 +214,8 @@
         margin: 0;
       }
 
+      h2, h3 { break-after: avoid; }
+      .entry, .patents li, .skills > div { break-inside: avoid; }
       a { color: inherit; }
       footer { display: none; }
     }
@@ -188,7 +230,7 @@
       <div class="interests">Computer Systems · Runtime Systems · Hardware–Software Co-design</div>
       <div class="links">
         <!-- Replace the email address below before publishing. -->
-        <a href="mailto:your-email@example.com">Email</a>
+        <a href="mailto:redshimjason@gmail.com">Email</a>
         <a href="https://github.com/redshimjason">GitHub</a>
       </div>
     </header>
@@ -197,8 +239,8 @@
       <h2>About</h2>
       <p>
         I work on Android/Linux system performance at Samsung Electronics.
-        My experience spans memory management, kernel/user-space performance analysis,
-        and automated performance evaluation on mobile devices.
+        My work combines kernel memory management, cross-layer debugging, and real-device experimentation
+        with large-scale telemetry to improve memory efficiency and application responsiveness.
       </p>
     </section>
 
@@ -212,9 +254,75 @@
         </div>
         <div class="meta">Mobile eXperience (MX), System Development / System Performance</div>
         <ul>
-          <li>Develop and optimize Android/Linux system software for memory management and system performance.</li>
-          <li>Analyze kernel regressions, memory pressure, swap/reclaim, and application-launch performance using system traces and controlled experiments.</li>
-          <li>Build automated multi-device testing and analysis pipelines for performance regression detection and validation.</li>
+          <li>Develop and optimize Android/Linux system software for memory management and application responsiveness.</li>
+          <li>Build profiling and automated multi-device testing workflows to diagnose performance regressions and validate system-level optimizations.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="contributions" aria-labelledby="contributions-heading">
+      <h2 id="contributions-heading">Selected Engineering Contributions</h2>
+
+      <div class="entry">
+        <h3 class="entry-title">Lifecycle-Aware zram Writeback for Samsung RAM Plus</h3>
+        <ul>
+          <li>
+            Contributed core <code>zram</code> writeback functionality to Samsung RAM Plus,
+            combining batched storage I/O, per-process reclaim of frozen background apps,
+            and prefetching on foreground transitions.
+          </li>
+          <li>
+            Aligned reclaim and prefetch policies with Android app lifecycles to improve swap locality
+            and storage residency while addressing foreground I/O latency,
+            <strong>reducing DRAM usage by over 1 GB on average on 12 GB devices</strong>.
+          </li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <h3 class="entry-title">Telemetry-Driven Resident-Process Memory Reduction</h3>
+        <ul>
+          <li>
+            Built a large-scale idle-memory telemetry pipeline and correlated resident-process snapshots
+            with aggregated issue logs and Android service-binding connections to diagnose
+            hard-to-reproduce process retention.
+          </li>
+          <li>
+            Worked with application teams and Google on evidence-backed fixes, delivering
+            <strong>~400 MB in initial memory savings</strong> (~5% of an 8 GB device's DRAM)
+            and automating ongoing memory-regression gatekeeping.
+          </li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <h3 class="entry-title">Reusable Memory Pool for Low-Latency Camera Allocation</h3>
+        <ul>
+          <li>
+            Designed and implemented a dual-use memory pool for camera allocations and Linux cleancache,
+            reusing idle camera memory for file caching while preserving
+            <strong>near-reserved-memory allocation latency</strong>.
+          </li>
+          <li>
+            Shifted cache population from <code>kswapd</code> reclaim to Android app foreground-to-background transitions,
+            removing the <strong>~10% page-copy overhead</strong> observed in the <code>kswapd</code> file-reclaim path
+            under allocation-intensive workloads.
+          </li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <h3 class="entry-title">Memory-Efficient On-Device LLM Loading</h3>
+        <ul>
+          <li>
+            Traced model-loading I/O with <code>strace</code> and identified redundant model-data copies
+            across the page cache, userspace read buffers, and DMA-BUF memory.
+          </li>
+          <li>
+            Replaced buffered reads with windowed <code>mmap</code>-based loading,
+            copying mapped data to DMA-BUF memory without intermediate read buffers and
+            <strong>reducing peak memory usage during LLM loading by over 20%</strong>.
+          </li>
         </ul>
       </div>
     </section>
@@ -264,11 +372,32 @@
       </ul>
     </section>
 
-    <section>
-      <h2>Skills</h2>
-      <p class="skills">
-        C · C++ · Python · Java · Android/AOSP · Linux Kernel · Perfetto · ftrace · simpleperf · Git
-      </p>
+    <section aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Technical Skills</h2>
+      <dl class="skills">
+        <div>
+          <dt>Systems</dt>
+          <dd>Linux kernel memory management (reclaim, swap, zram); Android/AOSP.</dd>
+        </div>
+        <div>
+          <dt>Cross-layer debugging</dt>
+          <dd>Root-cause analysis across the kernel, Android framework, and applications;
+            Perfetto, ftrace, simpleperf, strace.</dd>
+        </div>
+        <div>
+          <dt>Device experiments</dt>
+          <dd>Controlled experiments on physical Android devices, multi-device test automation,
+            and structured result analysis.</dd>
+        </div>
+        <div>
+          <dt>Telemetry &amp; analysis</dt>
+          <dd>Large-scale memory logging, issue-log correlation, and data-driven optimization.</dd>
+        </div>
+        <div>
+          <dt>Languages &amp; tools</dt>
+          <dd>C · C++ · Python · Java · SQL · pandas · Git</dd>
+        </div>
+      </dl>
     </section>
 
     <section>
