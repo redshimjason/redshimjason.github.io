@@ -145,18 +145,47 @@
     }
 
     .patents li {
-      margin: 0 0 15px;
+      margin: 0 0 25px;
     }
 
+    .patents li:last-child { margin-bottom: 0; }
+
     .patent-title {
+      margin: 0;
+      font-size: 1.02rem;
+      line-height: 1.45;
       font-weight: 600;
     }
 
     .patent-meta {
       color: var(--muted);
       font-size: 0.93rem;
-      margin-top: 1px;
+      margin-top: 3px;
     }
+
+    .patent-summary {
+      margin: 7px 0 0;
+    }
+
+    .patent-reference {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .patent-reference summary {
+      cursor: pointer;
+      width: fit-content;
+    }
+
+    .patent-reference summary:hover { color: var(--link); }
+
+    .patent-reference summary:focus-visible {
+      outline: 2px solid var(--link);
+      outline-offset: 3px;
+    }
+
+    .patent-reference p { margin-top: 5px; }
 
     .skills {
       margin: 0;
@@ -339,35 +368,66 @@
       </div>
     </section>
 
-    <section>
-      <h2>Patents</h2>
+    <section aria-labelledby="patents-heading">
+      <h2 id="patents-heading">Patents</h2>
 
       <ul class="patents">
         <li>
-          <div class="patent-title">
-            <a href="https://patents.google.com/patent/US12229407B2/en">
-              Electronic Device Comprising Heterogeneous Memories and Method for Transferring Compression Data Between Heterogeneous Memories Thereof
-            </a>
+          <h3 class="patent-title">Batched Writeback of Compressed Memory</h3>
+          <div class="patent-meta">
+            Co-inventor · <a href="https://patents.google.com/patent/US12229407B2/en">US 12,229,407 B2</a> · 2025
           </div>
-          <div class="patent-meta">Co-inventor · US 12,229,407 B2 · 2025</div>
+          <p class="patent-summary">
+            Designed experiments and validated the performance benefits of batched compressed-memory writeback.
+            The technique was <strong>first adopted in Samsung Galaxy S21</strong>.
+          </p>
+          <details class="patent-reference">
+            <summary>Official patent title</summary>
+            <p>
+              <a href="https://patents.google.com/patent/US12229407B2/en">
+                Electronic Device Comprising Heterogeneous Memories and Method for Transferring Compression Data Between Heterogeneous Memories Thereof
+              </a>
+            </p>
+          </details>
         </li>
 
         <li>
-          <div class="patent-title">
-            <a href="https://patents.google.com/patent/WO2026010078A1/en">
-              Electronic Device, Method, and Non-Transitory Computer-Readable Storage Medium for Managing Available Space of Volatile Memory
-            </a>
+          <h3 class="patent-title">CPU-Aware Memory Preparation for On-Device AI</h3>
+          <div class="patent-meta">
+            Main inventor · <a href="https://patents.google.com/patent/WO2026010078A1/en">WO 2026/010078 A1</a> · 2026
           </div>
-          <div class="patent-meta">Main inventor · WO 2026/010078 A1 · 2026</div>
+          <p class="patent-summary">
+            Invented CPU-aware memory preparation for on-device AI model loading.
+            The technique was <strong>first adopted in Samsung Galaxy S25</strong>.
+          </p>
+          <details class="patent-reference">
+            <summary>Official patent title</summary>
+            <p>
+              <a href="https://patents.google.com/patent/WO2026010078A1/en">
+                Electronic Device, Method, and Non-Transitory Computer-Readable Storage Medium for Managing Available Space of Volatile Memory
+              </a>
+            </p>
+          </details>
         </li>
 
         <li>
-          <div class="patent-title">
-            <a href="https://patents.google.com/patent/US12625612B2/en">
-              Electronic Device for Managing Memory and Operating Method Thereof
-            </a>
+          <h3 class="patent-title">Adaptive File-Page Prefetching</h3>
+          <div class="patent-meta">
+            Main inventor · <a href="https://patents.google.com/patent/US12625612B2/en">US 12,625,612 B2</a> · 2026
           </div>
-          <div class="patent-meta">Main inventor · US 12,625,612 B2 · 2026</div>
+          <p class="patent-summary">
+            Proposed adaptive file-page prefetching based on application access patterns.
+            Not deployed in products: its benefits over prefetching all mapped pages did not justify
+            the additional computation and memory overhead.
+          </p>
+          <details class="patent-reference">
+            <summary>Official patent title</summary>
+            <p>
+              <a href="https://patents.google.com/patent/US12625612B2/en">
+                Electronic Device for Managing Memory and Operating Method Thereof
+              </a>
+            </p>
+          </details>
         </li>
       </ul>
     </section>
